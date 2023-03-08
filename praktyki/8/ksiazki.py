@@ -7,10 +7,19 @@ class Book:
         self.book_list=book_list
     
     def display_info(self):
-        x=1
-        for title, author, amount in book_list:
-            print(x, "tytuł: ", title, "| autor: ", author, "| Ilość: ", amount)
-            x+=1
+        for book_number, book_info in book_list.items():
+            print(book_number)    
+            for book_title, book_author in book_info.items():
+                print("Tytuł:", book_title)
+                print("Autro:", book_author)
+                for attribute, value in book_author.items():
+                    if attribute == "Ilość":
+                        print("Ilość:")
+                        for amount_type, amount in value.items():
+                            print(amount_type + ":", amount)
+                    else:
+                        print(attribute + ":", value)
+
     def dodaj(self):
         if(tytul==book_list & autor==book_list):
             book_list.append(tytul, autor, numer)
@@ -20,39 +29,41 @@ dzial=input("Co chcesz zrobić? \n 1)usunąć książke \n 2)dodać książke \n
 
 
 book_list={
-        "Książka1":{
-            "IT",
-            "nie pamiętam",
-            "Ilosć":{
+        "Numer 1":{
+            "Tytuł":"IT",
+            "autor":"nie pamiętam",
+            "Ilość":{
                 "wypożyczone":4, 
                 "dostępne":2, 
                 "razem":3
                     }
                     },
-        "Książka2":{
-            "w pustyni i w puszczy", 
-            "nie pamiętam", 
-            "Ilosć":{
+        "Numer 2":{
+            "Tytuł":"w pustyni i w puszczy", 
+            "autor":"nie pamiętam", 
+            "Ilość":{
                 "wypożyczone":1, 
                 "dostępne":2, 
                 "razem":3
-            }, 
-            "Książka3":{
-                "Dziady", 
-                "Mickiewicz",
-                "Ilosć":{
-                    "wypożyczone":1, 
-                    "dostępne":2, 
-                    "razem":3
-                        }
-            }
+                    }
+                    }, 
+        "Numer 3":{
+            "Tytuł":"Dziady", 
+            "autor":"Mickiewicz",
+            "Ilość":{
+                "wypożyczone":1, 
+                "dostępne":2, 
+                "razem":3
+                    }
+                    }
+}
 
 book=Book(book_list)
 
-if(dzial==2):
+if(dzial=="2"):
     tytul=input("Tytuł: ")
     autor=input("Autor: ")
     numer=input("IBSN: ")
     
-elif(dzial==3):
+elif(dzial=="3"):
     book.display_info()
