@@ -2,10 +2,12 @@
  Utwórz klasę 'Book', która będzie miała atrybuty 'title', 'author' oraz 'isbn'. 
  Następnie utwórz listę obiektów klasy 'Book', a w programie umożliw użytkownikowi dodawanie, usuwanie i wyświetlanie informacji o książkach z tej listy."""
 ilosc=0
+tytul=()
+autor=()
 class Book:
-    def __init__(self, book_list):
+    def __init__(self, book_list,nowe):
         self.book_list=book_list
-    
+        self.nowe=nowe
     def display_info(self):
         for book_number, book_info in book_list.items():
             print()
@@ -16,10 +18,12 @@ class Book:
                 print(attribute + ":", value)
     
     def dodaj(self):
+
+       
         if(tytul==book_list["Tytuł"] & autor==book_list["Autor"]):
-            book_list.update ({"Numer":{"Tytuł":tytul, "Autor":autor, "Ilość":numer}})
+            book_list.update ({nowe()})
         else:
-            ilosc+=1
+            ilosc+=numer
             
 
 dzial=input("Co chcesz zrobić? \n 1)usunąć książke \n 2)dodać książke \n 3)zobaczyć tytuły \n 4)Wyjść \n")
@@ -54,14 +58,27 @@ book_list={
                     }
                     }
 }
-
-book=Book(book_list)
+nowe={}
+book=Book(book_list, nowe)
 
 if(dzial=="2"):
-    tytul=input("Tytuł: ")
-    autor=input("Autor: ")
-    numer=input("Ile: ")
     
+    for tytul, autor, numer in nowe():
+        tytul=input("Tytuł: ")
+        autor=input("Autor: ")
+        numer=input("Ile: ")
+    
+    nowe={
+        f"Numer {ilosc}":{
+            "Tytuł":tytul,
+            "Autor":autor,
+            "Ilość":{
+                "wypożyczone":ilosc,
+                "dostępne":ilosc,
+                "razem":ilosc,
+            }
+        }       
+}
 elif(dzial=="3"):
     book.display_info()
 
