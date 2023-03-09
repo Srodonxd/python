@@ -24,11 +24,15 @@ class Book:
                 break
     
     def usun(self):
-        for element, item in book_list:
-            if(tytul not in item):
-                index=book_list.index(tytul)
-                print(index)
-                del book_list[element]
+        ilosc=0
+        for element in book_list:
+            ilosc+=1
+            for  item in element.values():
+                if(tytul not in item):
+                    #index=book_list.index(element)
+                    #print(index)
+                    print(ilosc)
+                    book_list.remove(ilosc)
     
         
         # Jesli istnieje update, jesli nie dddodac do listy slef.book_list.append(...)
