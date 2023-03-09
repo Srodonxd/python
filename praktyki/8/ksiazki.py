@@ -7,9 +7,8 @@ class Book:
         self.book_list=book_list
     
     def display_info(self):
-        for book_number, book_info in book_list.items():
-            print()
-            print(book_number)    
+        for book_info in book_list:
+            print()    
             print("Tytuł:",book_info["Tytuł"])
             print("Autor:",book_info["Autor"])
             for attribute, value in book_info["Ilość"].items():
@@ -23,8 +22,7 @@ class Book:
                 ilosc+=1
             else:
                 self.book_list.append(nowe)
-                 
-
+                break
         # to bedzie pod nowe   
         #     nowe={
 
@@ -96,10 +94,9 @@ if(dzial=="2"):
 elif(dzial=="3"):
     book.display_info()
 
-for book_number, book_info in book_list.items():
-            print()
-            print(book_number)    
-            print("Tytuł:",book_info["Tytuł"])
-            print("Autor:",book_info["Autor"])
-            for attribute, value in book_info["Ilość"].items():
-                print(attribute + ":", value)
+for book_info in book_list:
+    print()   
+    print("Tytuł:",book_info["Tytuł"])
+    print("Autor:",book_info["Autor"])
+    for attribute, value in book_info["Ilość"].items():
+        print(attribute + ":", value)
