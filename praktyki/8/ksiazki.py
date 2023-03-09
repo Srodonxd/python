@@ -22,13 +22,13 @@ class Book:
             else:
                 self.book_list.append(nowe)
                 break
+    
     def usun(self):
-        for item in book_list:
-            if(item==tytul):
+        for element, item in book_list:
+            if(tytul not in item):
                 index=book_list.index(tytul)
                 print(index)
-                del book_list[index]            
-    
+                del book_list[element]
     
         
         # Jesli istnieje update, jesli nie dddodac do listy slef.book_list.append(...)
@@ -73,7 +73,7 @@ elif(dzial=="2"):
     
     tytul=input("Tytuł: ")
     autor=input("Autor: ")
-    numer=input("Ile: ")
+    numer=int(input("Ile: "))
     
     nowe={
 
