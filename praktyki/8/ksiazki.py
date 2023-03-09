@@ -15,7 +15,6 @@ class Book:
                 print(attribute + ":", value)
     
     def dodaj(self, nowe):
-        print(nowe)
         ilosc=0
         for item in book_list:
             if(tytul in item and autor in item):
@@ -23,18 +22,11 @@ class Book:
             else:
                 self.book_list.append(nowe)
                 break
-        # to bedzie pod nowe   
-        #     nowe={
-
-        #         "Tytuł":tytul,
-        #         "Autor":autor,
-        #         "Ilość":{
-        #             "wypożyczone":0,
-        #             "dostępne":numer,
-        #             "razem":numer,
-        #         }      
-        # }
-        # Przeszukiwanie listy zeby znalexc czy taki tytul istnieje
+    def usun(self):
+        index=book_list.index(tytul)
+        del book_list[index]            
+    
+    
         
         # Jesli istnieje update, jesli nie dddodac do listy slef.book_list.append(...)
         # nie masz zmiennej tytul i autor, musisz to wziac z nowe['tytul'] i nowe['autor'] bo przekazujesz slownik
@@ -48,8 +40,6 @@ class Book:
             
 
 dzial=input("Co chcesz zrobić? \n 1)usunąć książke \n 2)dodać książke \n 3)zobaczyć tytuły \n 4)Wyjść \n")
-
-# TO jest list tytulow nie slownik tytulow jak miales
 
 book_list=[
                 {
@@ -73,8 +63,10 @@ book_list=[
             ]
 
 book=Book(book_list)
-
-if(dzial=="2"):
+if(dzial=="1"):
+    tytul=input("Tytuł: ")
+    book.usun()
+elif(dzial=="2"):
     
     tytul=input("Tytuł: ")
     autor=input("Autor: ")
