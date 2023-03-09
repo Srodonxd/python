@@ -23,8 +23,11 @@ class Book:
                 self.book_list.append(nowe)
                 break
     def usun(self):
-        index=book_list.index(tytul)
-        del book_list[index]            
+        for item in book_list:
+            if(item==tytul):
+                index=book_list.index(tytul)
+                print(index)
+                del book_list[index]            
     
     
         
