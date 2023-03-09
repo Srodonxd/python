@@ -26,14 +26,13 @@ class Book:
     def usun(self):
         ilosc=0
         for element in book_list:
-            ilosc+=1
             for  item in element.values():
-                if(tytul not in item):
+                if(tytul in item):
                     #index=book_list.index(element)
                     #print(index)
                     print(ilosc)
-                    book_list.remove(ilosc)
-    
+                    book_list.pop(ilosc)
+            ilosc+=1
         
         # Jesli istnieje update, jesli nie dddodac do listy slef.book_list.append(...)
         # nie masz zmiennej tytul i autor, musisz to wziac z nowe['tytul'] i nowe['autor'] bo przekazujesz slownik
