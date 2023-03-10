@@ -15,15 +15,14 @@ class Text:
         return
 
     def print_words_counts(self, text_input):
-        for word in text_input():
+        for word in text_input:
             if word in count:
                 count[word]+=1
             else:
                 count[word]=1
             
 
-for element, ilosc in count.items():
-    print(f"słowo {element} występuje {ilosc} razy")        
+   
 
 
 text=Text()
@@ -31,3 +30,6 @@ text_input=input("Wpisz tekst: ")
 
 text.count_words(text_input)
 text.print_words_counts(text_input)
+
+for element, ilosc in count.items():
+    print(f"słowo {element} występuje {ilosc} razy")     
