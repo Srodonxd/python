@@ -7,47 +7,40 @@ class Book:
         self.book_list=book_list
     
     def display_info(self):
-        for book_info in book_list:
+        for book_info in self.book_list:
             print()    
             print("Tytuł:",book_info["Tytuł"])
             print("Autor:",book_info["Autor"])
             for attribute, value in book_info["Ilość"].items():
                 print(attribute + ":", value)
+        return f"Ilosc ksiazek wynosi: {len(self.book_list)}"
     
-    def dodaj(self, nowe):
+    def dodaj(self, nowe, tytul, autor):
         ilosc=0
-        for item in book_list:
-            if(tytul in item and autor in item):
-                ilosc+=1
-            else:
-                self.book_list.append(nowe)
-                break
+        exists = False
+        for item in self.book_list:
+            if tytul == item['Tytuł'] and autor == item["Autor"]:
+                exists = True
+                ilosc = item['Ilość']['Dostepne']
+                item['ilość']['razem'] += nowe['ilość']['razem']
+                item['ilość']['dostepne'] += nowe['ilość']['razem']
+                return True
+        if not exists:
+            self.book_list.append(nowe)
+        return False
     
-    def usun(self):
+    def usun(self, tytul):
         ilosc=0
-        for element in book_list:
+        for element in self.book_list:
             for  item in element.values():
                 if(tytul in item):
-                    #index=book_list.index(element)
-                    #print(index)
                     print(ilosc)
-                    book_list.pop(ilosc)
+                    self.book_list.pop(ilosc)
             ilosc+=1
-        
-        # Jesli istnieje update, jesli nie dddodac do listy slef.book_list.append(...)
-        # nie masz zmiennej tytul i autor, musisz to wziac z nowe['tytul'] i nowe['autor'] bo przekazujesz slownik
-
-
-        # Znajdx rozwiazanie w necie jak znalezc klucz slownika w liscie albo tak jak mowis zpoprostu petla w self.book_list i porownujesz tytuly
-
-            # Ilosc ? Czego, skad? To masz ilosc jakiejs zmiennej, no tak a jak juz masz ich 5? to dodasz o 1 do ilosci a w klasie nie zmieni sie wartosc tylko tam u gory
-            # potem znowu ktos dodaje i zamiast 2 ma 3 etc.
-            # wykonaj te instrukcje wyzej
-            
 
 dzial=input("Co chcesz zrobić? \n 1)usunąć książke \n 2)dodać książke \n 3)zobaczyć tytuły \n 4)Wyjść \n")
 
-book_list=[
+book_list_pre=[
                 {
                 "Tytuł":"IT",
                 "Autor":"nie pamiętam",
@@ -58,20 +51,21 @@ book_list=[
                         }
                 }, 
                 {
-                    "Tytuł":"w pustyni i w puszczy", 
-                    "Autor":"nie pamiętam", 
-                    "Ilość":{
-                        "wypożyczone":1, 
-                        "dostępne":2, 
-                        "razem":3
-                            }
+                "Tytuł":"w pustyni i w puszczy", 
+                "Autor":"nie pamiętam", 
+                "Ilość":{
+                    "wypożyczone":1, 
+                    "dostępne":2, 
+                    "razem":3
+                        }
                 }
             ]
 
-book=Book(book_list)
+book=Book(book_list_pre)
 if(dzial=="1"):
     tytul=input("Tytuł: ")
     book.usun()
+
 elif(dzial=="2"):
     
     tytul=input("Tytuł: ")
@@ -88,13 +82,15 @@ elif(dzial=="2"):
             "razem":numer,
         }      
 }
-    book.dodaj(nowe)
+    print(book_list_pre)
+    book.dodaj(nowe, tytul, autor)
+    print(book_list_pre)
 elif(dzial=="3"):
     book.display_info()
 
-for book_info in book_list:
-    print()   
-    print("Tytuł:",book_info["Tytuł"])
-    print("Autor:",book_info["Autor"])
-    for attribute, value in book_info["Ilość"].items():
-        print(attribute + ":", value)
+# for book_info in book_list_pre:
+#     print()   
+#     print("Tytuł:",book_info["Tytuł"])
+#     print("Autor:",book_info["Autor"])
+#     for attribute, value in book_info["Ilość"].items():
+#         print(attribute + ":", value)
