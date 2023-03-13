@@ -2,7 +2,9 @@ import random
 x=money_totality=0
 b=1
 list=[]
+
 group=int(input("Ile osób bierze udział?(MAKS 6 OSÓB): "))
+
 print("Podaj imiona oraz ich zakład")
 while x!=group:
     new=input(f"{x+1}: ")
