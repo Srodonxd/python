@@ -3,8 +3,9 @@
 liczby=(
     element 
     for element in range(100,470)
-    if (element % 7 ==0)
-    if (element % 5 !=0)
+    if element % 7 ==0
+    if element % 5 !=0
 )
 
-print(liczby)
+for liczba in liczby:
+    print(liczba)
