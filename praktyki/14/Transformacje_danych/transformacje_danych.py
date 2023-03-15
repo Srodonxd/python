@@ -1,4 +1,7 @@
 import sys
+import time
+
+start=time.perf_counter()
 #Zapisuje dane w pamięci
 evenNumbers=[element
              for element in range (400)
@@ -14,7 +17,8 @@ evenNumbersGenerator=(element
 print(sys.getsizeof(evenNumbers))
 print(sys.getsizeof(evenNumbersGenerator))
 
-
+end=time.perf_counter()
+print(end-start)
 
 
 names= {"Arkadiusz", "Wioletta", "Karol", "Bartłomiej", "Jakub", "Ania"}
