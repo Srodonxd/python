@@ -15,7 +15,7 @@ wybor=int(input("""Co byś chciał zobaczyć?:
 if(wybor==components.CPU):
     os.system('wmic cpu get name, family, maxclockspeed, l2cachesize, numberoflogicalprocessors, numberofcores')
 elif(wybor==components.Motherboard):
-    os.system('')
+    os.system('baseboard get manufacturer, product')
 elif(wybor==components.BIOS):
     os.system('wmic bios get name, version, releasedate')
 elif(wybor==components.RAM):
