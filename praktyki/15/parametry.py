@@ -19,6 +19,6 @@ elif(wybor==components.Motherboard):
 elif(wybor==components.BIOS):
     os.system('wmic bios get name, version, releasedate')
 elif(wybor==components.RAM):
-    os.system('')
+    os.system('wmic memorychip get devicelocator, capacity, speed, memorytype, manufacturer')
 elif(wybor==components.Graphics):
-    os.system('')
+    os.system('wmic path win32_videocontroller get name, status, adapterram, driverversion')
