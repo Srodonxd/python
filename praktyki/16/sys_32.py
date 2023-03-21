@@ -15,8 +15,9 @@ for gpu in w.Win32_VideoController():
 
 for mem in w.Win32_PhysicalMemory():
     print("Pamięć RAM:")
+    capacity_mb = int(mem.Capacity) / 1024 / 1024
     print(f"- Producent: {mem.Manufacturer}")
-    print(f"- Pojemność: {mem.Capacity / 1024 / 1024:.2f} MB")
+    print(f"- Pojemność: {capacity_mb:.2f} MB")
 
 for disk in w.Win32_DiskDrive():
     print("Dysk twardy:")
